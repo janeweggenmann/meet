@@ -100,7 +100,7 @@ module.exports.getCalendarEvents = async (event) => {
     redirect_uris[0]
   );
 
-  const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
+  const access_token = encodeURIComponent(`${event.pathParameters.access_token}`);
   oAuth2Client.setCredentials({ access_token });
 
   return new Promise((resolve, reject) => {

@@ -1,2 +1,4 @@
-
-node_modules/.cache/gh-pages/https!github.com!janeweggenmann!meet.git/
+node_modules/
+.cache/
+.DS_Store
+build/

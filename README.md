@@ -61,7 +61,7 @@ Scenario 2: Show error when user changes the settings (city, time range)
 
 #### Feature: Data visualization
 Scenario 1: Show a chart with the number of upcoming events in each city
-  > **Given** the user would like a visual representation of upcoming events
+  > **Given** the user would like a visual representation of upcoming events  
   > **When** the user clicks on charts  
   > **Then** show a chart with the number of upcoming events in each city
 

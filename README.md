@@ -39,7 +39,7 @@ Scenario 3: User can collapse an event to hide its details
 
 #### Feature: Specify number of events
 Scenario 1: When user hasn’t specified a number, 32 is the default number
-  > **Given** the user has not specified a number
+  > **Given** the user has not specified a number  
   > **When** the list of events is displayed    
   > **Then** the number of events shown is 32 (default). 
 
@@ -53,6 +53,7 @@ Scenario 1: Show cached data when there’s no internet connection
   > **Given** there is no internet connection   
   > **When** the user opens the app  
   > **Then** use cached data to display information  
+
 Scenario 2: Show error when user changes the settings (city, time range)
   > **Given** there is no internet connection  
   > **When** the user changes the settings  
@@ -60,7 +61,7 @@ Scenario 2: Show error when user changes the settings (city, time range)
 
 #### Feature: Data visualization
 Scenario 1: Show a chart with the number of upcoming events in each city
-  > **Given** the user would like a visual representation of upcoming events
+  > **Given** the user would like a visual representation of upcoming events  
   > **When** the user clicks on charts  
   > **Then** show a chart with the number of upcoming events in each city
 

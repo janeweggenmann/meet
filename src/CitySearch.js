@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class CitySearch extends Component {
   state = {
@@ -38,7 +38,7 @@ class CitySearch extends Component {
               {suggestion}
             </li>
           ))}
-          <li key='all'>
+          <li key="all">
             <b>See all cities</b>
           </li>
         </ul>

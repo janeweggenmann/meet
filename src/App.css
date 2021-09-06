@@ -105,7 +105,7 @@ input[type="number"] {
   margin: 15px auto 5px;
   border-radius: 4px;
   border: none !important;
-  background-image: linear-gradient(to right, #29323c, #485563, #2b5876, #4e4376);
+  background-image: linear-gradient(to right, #31455c, #43668b, #4a81a5, #675b96);
   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
   background-size: 300% 100%;
   color: #fff;
@@ -166,7 +166,6 @@ input[type="number"] {
 }
 
 .Alert {
-  position: fixed;
   top: 20px;
 }
 

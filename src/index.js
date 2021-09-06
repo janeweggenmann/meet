@@ -6,6 +6,10 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import * as atatus from 'atatus-spa';
+
+
+atatus.config('b2d4293bfba84ad983577fd9fe82addc').install();
 
 ReactDOM.render(
   <React.StrictMode>

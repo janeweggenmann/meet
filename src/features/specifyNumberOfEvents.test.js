@@ -13,7 +13,7 @@ defineFeature(feature, test => {
     let AppWrapper;
     when('the list of events is displayed', () => {
       AppWrapper = mount(<App />);
-      expect(AppWrapper.find('.EventList')).toBeDefined;
+      expect(AppWrapper.find('.EventList')).toBeDefined();
     });
     then('the number of events shown is 32 by default', () => {
       expect(AppWrapper.state("numberOfEvents")).toBe(32);
@@ -24,7 +24,7 @@ defineFeature(feature, test => {
     let AppWrapper, NumberOfEventsWrapper;
     given('the list of events is displayed', () => {
       AppWrapper = mount(<App />);
-      expect(AppWrapper.find('.EventList')).toBeDefined;
+      expect(AppWrapper.find('.EventList')).toBeDefined();
     });
     when('the user has entered the number of events they want to see', () => {
       NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);

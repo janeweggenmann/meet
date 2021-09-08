@@ -8,6 +8,7 @@ import './nprogress.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { WarningAlert } from './Alert';
+import logo from "./logo-title.png";
 
 class App extends Component {
   state = {
@@ -78,7 +79,7 @@ class App extends Component {
       <Container className="App">
         <Row>
           <Col md={12}>
-            <h1>MeetUp</h1>
+            <img src={logo} className="title-logo" alt="Meet Up App Logo" />
             <WarningAlert text={this.state.warningText} />
           </Col>
         </Row >

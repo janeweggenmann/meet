@@ -3,12 +3,14 @@ import "./App.css";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
-import { getEvents, extractLocations } from './api';
 import './nprogress.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { WarningAlert } from './Alert';
 import logo from "./logo-title.png";
+import WelcomeScreen from './WelcomeScreen';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+
 
 class App extends Component {
   state = {
@@ -16,7 +18,8 @@ class App extends Component {
     locations: [],
     currentLocation: "All",
     numberOfEvents: 32,
-    warningText: ""
+    warningText: "",
+    showWelcomeScreen: undefined
   };
 
   updateEventCount = (eventCount) => {
@@ -49,25 +52,32 @@ class App extends Component {
     });
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (!navigator.onLine) {
-        this.setState({
-          warningText: "You are offline. These events may not be up-to-date."
-        });
-      } else {
-        this.setState({
-          warningText: ""
-        });
-      }
-      if (this.mounted) {
-        this.setState({
-          events: events.slice(0, this.state.numberOfEvents),
-          locations: extractLocations(events)
-        });
-      }
-    });
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (!navigator.onLine) {
+          this.setState({
+            warningText: "You are offline. These events may not be up-to-date."
+          });
+        } else {
+          this.setState({
+            warningText: ""
+          });
+        }
+        if (this.mounted) {
+          this.setState({
+            events: events.slice(0, this.state.numberOfEvents),
+            locations: extractLocations(events)
+          });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -75,8 +85,12 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.showWelcomeScreen === undefined) return <div
+      className="App" />
     return (
       <Container className="App">
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }} />
         <Row>
           <Col md={12}>
             <img src={logo} className="title-logo" alt="Meet Up App Logo" />
@@ -98,6 +112,7 @@ class App extends Component {
             <EventList events={this.state.events} />
           </Col>
         </Row >
+
       </Container>
     );
   }

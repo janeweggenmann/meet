@@ -7,13 +7,15 @@ import { getEvents, extractLocations } from './api';
 import './nprogress.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
+import { WarningAlert } from './Alert';
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
-    currentLocation: "all",
-    numberOfEvents: 32
+    currentLocation: "All",
+    numberOfEvents: 32,
+    warningText: ""
   };
 
   updateEventCount = (eventCount) => {
@@ -25,8 +27,17 @@ class App extends Component {
   }
 
   updateEvents = (location) => {
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: "You are offline. These events may not be up-to-date."
+      });
+    } else {
+      this.setState({
+        warningText: ""
+      });
+    }
     getEvents().then((events) => {
-      const locationEvents = (location === "all") ?
+      const locationEvents = (location === "All") ?
         events.slice(0, this.state.numberOfEvents) : events.filter((event) => event.location === location);
       if (this.mounted) {
         this.setState({
@@ -40,6 +51,15 @@ class App extends Component {
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
+      if (!navigator.onLine) {
+        this.setState({
+          warningText: "You are offline. These events may not be up-to-date."
+        });
+      } else {
+        this.setState({
+          warningText: ""
+        });
+      }
       if (this.mounted) {
         this.setState({
           events: events.slice(0, this.state.numberOfEvents),
@@ -59,6 +79,7 @@ class App extends Component {
         <Row>
           <Col md={12}>
             <h1>MeetUp</h1>
+            <WarningAlert text={this.state.warningText} />
           </Col>
         </Row >
         <Row>

@@ -144,6 +144,22 @@ input[type="number"] {
   grid-template-columns: 1fr;
 }
 
+.data-vis-wrapper {
+  justify-items: stretch;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.recharts-responsive-container {
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.App-Data_Visualization {
+  padding-top: 20px;
+}
+
 .name {
   font-size: 18px;
   font-weight: 600;
@@ -175,17 +191,6 @@ input[type="number"] {
   top: 20px;
 }
 
-.data-vis-wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.data-vis-wrapper .recharts-responsive-container {
-  min-width: 100%;
-  display: flex;
-}
-
 .recharts-surface {
   overflow: visible;
 }
@@ -198,16 +203,11 @@ input[type="number"] {
 }
 
 @media only screen and (min-width: 992px) {
-  .data-vis-wrapper {
-    flex-direction: row;
-  }
-  .data-vis-wrapper .recharts-responsive-container {
-    flex-basis: 50%;
-    max-width: 50%;
-    min-width: auto;
-    margin: 0 auto;
-  }
   .EventList {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .data-vis-wrapper {
     grid-template-columns: 1fr 1fr;
   }
 }

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { PieChart, Pie, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from 'recharts';
 
 const EventGenre = ({ events }) => {
   const [data, setData] = useState([]);
   const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
+  const COLORS = ['#cdc5d7', '#4ab96b5', '#c2aeda', '#786295', '#686580'];
 
   const getData = () => {
     const data = genres.map(genre => {
@@ -19,7 +20,7 @@ const EventGenre = ({ events }) => {
   useEffect(() => { setData(() => getData()); }, [events]);
 
   return (
-    <ResponsiveContainer height={400}>
+    <ResponsiveContainer height={400} width="100%">
       <PieChart height={400}>
         <Pie
           data={data}
@@ -27,11 +28,14 @@ const EventGenre = ({ events }) => {
           cy={200}
           labelLine={false}
           outerRadius={80}
-          fill="#31455c"
           dataKey="value"
-          label={({ name, percent }) => (`${name} ${(percent * 100).toFixed(0)}%`)}
+          label={({ name, percent }) => (`${name} - ${(percent * 100).toFixed(0)}%`)}
         >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
         </Pie>
+        <Tooltip cursor={{ strokeDasharray: "3 3" }} />
       </PieChart>
     </ResponsiveContainer>
   );

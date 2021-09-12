@@ -63,7 +63,7 @@ class App extends Component {
     const { locations, events } = this.state;
     const data = locations.map((location) => {
       const number = events.filter((event) => event.location === location).length
-      const city = location.split(',').join('').split('-').join('').shift()
+      const city = location.split(/[,-]/).shift();
       return { city, number };
     })
     return data;
@@ -136,7 +136,7 @@ class App extends Component {
           <h5>Events in each city</h5>
           <div className="data-vis-wrapper">
             <EventGenre events={this.state.events} />
-            <ResponsiveContainer height={400} >
+            <ResponsiveContainer height={400} width="100%" >
               <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                 <CartesianGrid />
                 <XAxis type="category" dataKey="city" name="City" interval={0} textAnchor="start" tick={{ angle: 45 }} />

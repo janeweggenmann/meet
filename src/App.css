@@ -111,7 +111,7 @@ input[type="number"] {
   margin: 15px auto 5px;
   border-radius: 4px;
   border: none !important;
-  background-image: linear-gradient(to right, #31455c, #43668b, #4a81a5, #675b96);
+  background-image: linear-gradient(to right, #4e6885, #43668b, #4a81a5, #675b96);
   box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
   background-size: 300% 100%;
   color: #fff;
@@ -148,16 +148,26 @@ input[type="number"] {
   justify-items: stretch;
   align-items: center;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
+  font-size: 14tpt;
 }
 
 .recharts-responsive-container {
   width: 100%;
   padding-bottom: 100px;
+  margin: 20px 0px;
 }
 
 .App-Data_Visualization {
-  padding-top: 20px;
+  padding: 20px 0px;
+}
+
+.scatter-chart {
+  padding-right: 10px;
+}
+
+.pie-chart {
+  padding-left: 20px;
 }
 
 .name {
@@ -208,6 +218,6 @@ input[type="number"] {
   }
 
   .data-vis-wrapper {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 40% 60%;
   }
 }

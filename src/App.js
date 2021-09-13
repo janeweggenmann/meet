@@ -135,21 +135,25 @@ class App extends Component {
         <Row className="App-Data_Visualization" style={{ display: this.state.showWelcomeScreen ? 'none' : 'block' }}>
           <h5>Events in each city</h5>
           <div className="data-vis-wrapper">
-            <EventGenre events={this.state.events} />
-            <ResponsiveContainer height={400} width="100%" >
-              <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-                <CartesianGrid />
-                <XAxis type="category" dataKey="city" name="City" interval={0} textAnchor="start" tick={{ angle: 45 }} />
-                <YAxis
-                  allowDecimals={false}
-                  type="number"
-                  dataKey="number"
-                  name="Number of Events"
-                />
-                <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-                <Scatter data={this.getData()} fill="#675b96" />
-              </ScatterChart>
-            </ResponsiveContainer>
+            <div className="pie-chart">
+              <EventGenre events={this.state.events} />
+            </div>
+            <div className="scatter-chart">
+              <ResponsiveContainer height={400} width="100%" >
+                <ScatterChart>
+                  <CartesianGrid />
+                  <XAxis type="category" dataKey="city" name="City" interval={0} textAnchor="start" tick={{ angle: 45 }} />
+                  <YAxis
+                    allowDecimals={false}
+                    type="number"
+                    dataKey="number"
+                    name="Number of Events"
+                  />
+                  <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+                  <Scatter data={this.getData()} fill="#5398bd" />
+                </ScatterChart>
+              </ResponsiveContainer>
+            </div>
           </div>
         </Row>
         <Row className="App-EventList" style={{ display: this.state.showWelcomeScreen ? 'none' : 'block' }}>

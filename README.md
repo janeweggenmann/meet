@@ -1,8 +1,13 @@
 # Achievement 4 Project: Meet App
 Last Updated: August 29, 2021
 
+![Screen Shot 2021-10-24 at 5 46 06 PM](https://user-images.githubusercontent.com/81497203/138614207-5cbfc9e9-a064-4f13-9c50-07226f49c158.png)
+
+
 ## Objective
 The objective of this project is to build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
+
+To view this application, please visit: https://janeweggenmann.github.io/meet/
 
 ### Key Features
 1. Filter events by city.
